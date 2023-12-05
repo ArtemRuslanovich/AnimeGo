@@ -3,7 +3,7 @@ from aiogram.types import Message
 from urllib.parse import quote
 from aiogram.fsm.context import FSMContext
 from Utils.statesform import Selector
-from Utils.parser import parser
+from Utils.form.parser import parser
 
 async def select_anime(message: Message, bot: Bot, state: FSMContext):
     await state.set_state(Selector.FIND_ANIME)

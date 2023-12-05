@@ -4,7 +4,9 @@ from aiogram.utils.markdown import hbold
 from keyboards.genres import genres_keyboard
 from aiogram.fsm.context import FSMContext
 from Utils.statesform import StatesForm
-from Utils.parser import parser
+from Utils.form.parser import parser
+from Utils.form.description_parser import description_parser
+from aiogram.enums import ParseMode
 
 async def command_select_genre_handler(message: Message, state: FSMContext):
     await message.answer(f"Ну ладно {message.from_user.first_name}, давай начем с простого.  Для начала укажи, на какой жанр у тебя сегодня настроение", reply_markup=genres_keyboard)
@@ -23,12 +25,18 @@ async def command_show_examples(message: Message, bot: Bot, state: FSMContext):
     await message.reply(f'работает жанр {genre}, год {year}')
 
     url = f"https://animego.org/anime/filter/year-from-{year}/genres-is-{genre}/apply"
-    await message.answer(url)
     parsed_results = await parser(url)
-    await message.answer(parsed_results[0])
-    await message.answer(parsed_results[1])
-    await message.answer(parsed_results[2])
-    await message.answer(parsed_results[3])
-    await message.answer(parsed_results[4])
+    async def send_description_message(parsed_result):
+        poster_url, title, description, rating = await description_parser(parsed_result)
+        message_text = f"<b>{title}</b>\n\n" \
+                       f"Рейтинг: {rating}\n" \
+                       f"{description}\n" \
+                       f"{parsed_result}"
+        await message.answer_photo(photo=poster_url, caption=message_text, parse_mode=ParseMode.HTML)
+
+    # Используем цикл для отправки сообщений на основе данных из description_parser
+    for parsed_result in parsed_results[:5]:  # Первые 5 результатов, можно изменить по необходимости
+        await send_description_message(parsed_result)
+   
     await state.clear()
     await state.set_state(StatesForm.GET_GENRE)

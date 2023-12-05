@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import random
 
-url = 'https://animego.org/anime/filter/year-from-1990/genres-is-military/apply'
+url = 'https://animego.org/search/all?q=%D1%82%D0%BE%D0%BA%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9+%D0%B3%D1%83%D0%BB%D1%8C'
 
 # Отправляем запрос на сервер и получаем HTML-страницу
 response = requests.get(url)
@@ -12,6 +12,7 @@ print(response.status_code)
 if response.status_code == 200:
     html_content = response.text
     soup = BeautifulSoup(html_content, 'html.parser')
+    print(soup)
 
     # Находим все элементы с классом 'col-12'
     items = soup.find_all('div', class_='col-12')
