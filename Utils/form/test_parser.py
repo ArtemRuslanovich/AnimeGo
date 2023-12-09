@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import random
 
-url = 'https://animego.org/search/all?q=%D1%82%D0%BE%D0%BA%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9+%D0%B3%D1%83%D0%BB%D1%8C'
+url = 'https://animego.org/search/all?q=%D0%BC%D0%B0%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F+%D0%B1%D0%B8%D1%82%D0%B2%D0%B0+2'
 
 # Отправляем запрос на сервер и получаем HTML-страницу
 response = requests.get(url)
