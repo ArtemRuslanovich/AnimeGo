@@ -6,3 +6,5 @@ temp/*
 
 # Игнорировать файл log.txt в любом месте внутри проекта
 **/log.txt
+
+**/docker-compose.yml
