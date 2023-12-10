@@ -28,8 +28,11 @@ dp = Dispatcher()
 
 
 async def create_pool():
-    return await asyncpg.create_pool(user='postgres', password='80156120189fap', database='Users', host='localhost',
-                                    port='5432', command_timeout=60)
+    return await asyncpg.create_pool(user='postgres',
+                                    password='80156120189fap',
+                                    database='Users', host='localhost',
+                                    port='5432',
+                                    command_timeout=60)
 
 
 
