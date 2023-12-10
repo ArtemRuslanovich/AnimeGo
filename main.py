@@ -5,7 +5,6 @@ from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from handlers.start import command_start_handler, get_photo, command_help_handler#, get_random_message
 from settings import Settings
-from loggs import config_log
 from aiogram import F
 from aiogram.filters import Command
 from Commands.commands import set_commands
@@ -65,9 +64,6 @@ async def start_bot(bot: Bot):
     dp.update.middleware.register(Dbsession(pool_connect))
 
 dp.startup.register(start_bot)
-
-log_file_path = "D:\ХУЙНЯ\log.txt"
-logger = config_log(log_file_path)
 
 
 async def main() -> None:
