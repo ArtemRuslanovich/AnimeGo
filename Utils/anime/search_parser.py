@@ -1,6 +1,6 @@
-from selenium import webdriver
 from bs4 import BeautifulSoup
-import requests
+from selenium import webdriver
+
 
 async def search_parser(url : str):
     driver_path = r'D:\ХУЙНЯ\Utils\chromedriver\chromedriver.exe'  # замените это на путь к вашему драйверу
@@ -10,9 +10,6 @@ async def search_parser(url : str):
 
     # Откройте страницу
     driver.get(url)
-
-    # Дождитесь выполнения JavaScript на странице (может потребоваться настроить для вашего случая)
-    #driver.implicitly_wait(5)
 
     # Получите HTML-код страницы
     html = driver.page_source
