@@ -9,7 +9,7 @@ from aiogram.enums import ParseMode
 
 async def select_anime(message: Message, bot: Bot, state: FSMContext):
     await state.set_state(Selector.FIND_ANIME)
-    await message.reply("Отлично, у меня самого настроение японские мультики посмотреть...")
+    await message.reply("Напиши что ты хочешь посмотреть, я постараюсь найти")
 
 async def find_anime(message: Message, bot: Bot, state: FSMContext):
     words = message.text.split()

@@ -3,7 +3,7 @@ import logging
 import sys
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
-from handlers.start import command_start_handler, get_photo, command_help_handler#, get_random_message
+from handlers.start import command_start_handler, command_help_handler
 from settings import Settings
 from aiogram import F
 from aiogram.filters import Command
@@ -14,14 +14,11 @@ import asyncpg
 
 
 from handlers.anime import find_anime, select_anime
-from handlers.films import find_film, select_film
-from handlers.show import find_show, select_show
-from handlers.cartoons import find_cartoons, select_cartoons
 from handlers import form
 from handlers.selecttype import command_select_type_handler
 
 from Utils.statesform import StatesForm, Selector
-from Utils.isvalidyear import is_valid_year
+#from Utils.isvalidyear import is_valid_year
 
 dp = Dispatcher()
 
@@ -40,18 +37,11 @@ async def start_bot(bot: Bot):
     pool_connect = await create_pool()
     dp.message.register(command_start_handler, Command(commands=['start', 'run', 'пошел ты нахуй']))
     dp.message.register(command_help_handler, Command(commands=['help', 'хелп', 'помощь']))
-    #dp.message.register(get_random_message, F.text)
-    dp.message.register(get_photo, F.photo)
 
-    dp.message.register(select_anime, F.text == ('Аниме'))
-    dp.message.register(select_film, F.text == ('Фильм'))
-    dp.message.register(select_show, F.text == ('Сериал'))
-    dp.message.register(select_cartoons, F.text == ('Мультик'))
+
+    dp.message.register(select_anime, F.text == ('Знаю что посмотреть'))
 
     dp.message.register(find_anime, Selector.FIND_ANIME)
-    dp.message.register(find_film, Selector.FIND_FILM)
-    dp.message.register(find_show, Selector.FIND_SHOW)
-    dp.message.register(find_cartoons, Selector.FIND_CARTOON)
 
     dp.message.register(command_select_type_handler, F.text == ('Да'))
     dp.message.register(form.command_select_genre_handler, F.text == ('Не знаю'))

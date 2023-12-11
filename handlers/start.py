@@ -13,9 +13,7 @@ async def command_help_handler(message: Message, bot: Bot) -> None:
 
 
 async def get_photo(message: Message, bot: Bot) -> None:
-    await message.reply(f"Ого, фотокарточка. И что прикажешь с этим делать?")
-    file = await bot.get_file(message.photo[-1].file_id)
-    await bot.download_file(file.file_path, "D:\ХУЙНЯ\temp\photo.png")
+    await message.reply(f"Ого, фотокарточка. Пошел нахуй")
 
 
 #async def get_random_message(message: Message, bot: Bot) -> None:
