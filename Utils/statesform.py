@@ -5,8 +5,7 @@ class StatesForm(StatesGroup):
     GET_YEAR = State()
 
 class Selector(StatesGroup):
+    FIRST_CH = State()
     FIND_ANIME = State()
-    FIND_FILM = State()
-    FIND_CARTOON = State()
-    FIND_SHOW = State()
+
 

@@ -6,6 +6,7 @@ from Utils.statesform import Selector
 from Utils.anime.search_parser import search_parser
 from Utils.form.description_parser import description_parser
 from aiogram.enums import ParseMode
+from keyboards.inline import key_sub
 
 async def select_anime(message: Message, bot: Bot, state: FSMContext):
     await state.set_state(Selector.FIND_ANIME)
@@ -26,7 +27,8 @@ async def find_anime(message: Message, bot: Bot, state: FSMContext):
                        f"Рейтинг: {rating}\n" \
                        f"{description}\n" \
                        f"{parsed_result}"
-        await message.answer_photo(photo=poster_url, caption=message_text, parse_mode=ParseMode.HTML)
+        await message.answer_photo(photo=poster_url, caption=message_text, parse_mode=ParseMode.HTML, reply_markup=key_sub)
     await send_description_message(parsed_result)
 
     await state.clear()
+    await state.set_state(Selector.FIRST_CH)

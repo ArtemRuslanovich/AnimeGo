@@ -3,7 +3,7 @@ import logging
 import sys
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
-from handlers.start import command_start_handler, command_help_handler
+from handlers.start import command_start_handler, command_help_handler, command_back_handler
 from settings import Settings
 from aiogram import F
 from aiogram.filters import Command
@@ -12,7 +12,7 @@ from Commands.commands import set_commands
 from middlewares.dbmiddleware import Dbsession
 import asyncpg
 
-
+from handlers.callback import handle_yes_callback, handle_sub_callback
 from handlers.anime import find_anime, select_anime
 from handlers import form
 from handlers.selecttype import command_select_type_handler
@@ -35,13 +35,18 @@ async def create_pool():
 async def start_bot(bot: Bot):
     await set_commands(bot)
     pool_connect = await create_pool()
-    dp.message.register(command_start_handler, Command(commands=['start', 'run', 'пошел ты нахуй']))
-    dp.message.register(command_help_handler, Command(commands=['help', 'хелп', 'помощь']))
+    dp.message.register(command_start_handler, Command(commands=['start']))
+    dp.message.register(command_help_handler, Command(commands=['help']))
+    dp.message.register(command_back_handler, Command(commands=['back']))
 
 
     dp.message.register(select_anime, F.text == ('Знаю что посмотреть'))
 
     dp.message.register(find_anime, Selector.FIND_ANIME)
+
+    dp.callback_query.register(handle_yes_callback, F.data.startswith('Да'))
+    dp.callback_query.register(handle_sub_callback, F.data.startswith('Подписаться'))
+
 
     dp.message.register(command_select_type_handler, F.text == ('Да'))
     dp.message.register(form.command_select_genre_handler, F.text == ('Не знаю'))

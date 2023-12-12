@@ -21,6 +21,9 @@ async def description_parser(url: str):
                 rating = None
                 if aggregate_rating_script:
                     json_data = json.loads(aggregate_rating_script.string)
-                    rating = json_data['aggregateRating']['ratingValue']
+                    if 'aggregateRating' in json_data:
+                        rating = json_data['aggregateRating']['ratingValue']
+                    else:
+                        rating = None
 
                 return poster_url, cleaned_title, cleaned_description, rating
