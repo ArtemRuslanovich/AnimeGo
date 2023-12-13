@@ -7,4 +7,4 @@ from Utils.statesform import Selector
 
 async def command_select_type_handler(message: Message, bot: Bot, state: FSMContext):
     state.set_state(Selector.FIRST_CH)
-    await message.reply(f"Время сделать выбор", reply_markup=type_keyboard)
+    await message.reply(f"Время сделать выбор 🤔", reply_markup=type_keyboard)

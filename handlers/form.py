@@ -13,7 +13,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 async def command_select_genre_handler(message: Message, state: FSMContext):
-    await message.answer(f"Ну ладно {message.from_user.first_name}, давай начем с простого.  Для начала укажи, на какой жанр у тебя сегодня настроение", reply_markup=genres_keyboard)
+    await message.answer(f"Ну ладно {message.from_user.first_name}, давай начем с простого. Для начала укажи, на какой жанр у тебя сегодня настроение", reply_markup=genres_keyboard)
     await state.set_state(StatesForm.GET_GENRE)
 
 async def command_select_year_handler(message: Message, bot: Bot, state: FSMContext):

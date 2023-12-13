@@ -11,7 +11,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 async def select_anime(message: Message, bot: Bot, state: FSMContext):
     await state.set_state(Selector.FIND_ANIME)
-    await message.reply("Напиши что ты хочешь посмотреть, я постараюсь найти")
+    await message.reply("Напиши что ты хочешь посмотреть, я постараюсь найти 🔍🔍🔍")
 
 async def find_anime(message: Message, bot: Bot, state: FSMContext):
     words = message.text.split()
