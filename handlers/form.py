@@ -7,8 +7,8 @@ from Utils.statesform import StatesForm
 from Utils.form.parser import parser
 from Utils.form.description_parser import description_parser
 from aiogram.enums import ParseMode
-from keyboards.inline import key_sub
 import datetime
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 
@@ -32,12 +32,17 @@ async def command_show_examples(message: Message, bot: Bot, state: FSMContext):
         url = f"https://animego.org/anime/filter/year-from-{year}/genres-is-{genre}/apply"
         parsed_results = await parser(url)
         async def send_description_message(parsed_result):
-            poster_url, title, description, rating = await description_parser(parsed_result)
+            poster_url, title, description, rating, anime_id = await description_parser(parsed_result)
             message_text = f"<b>{title}</b>\n\n" \
                         f"Рейтинг: {rating}\n" \
                         f"{description}\n" \
                         f"{parsed_result}"
+            subscribe_button = InlineKeyboardButton(text="Подписаться", callback_data=f'subscribe_{anime_id}')
+
+    # Создаем клавиатуру и добавляем к ней кнопку
+            key_sub = InlineKeyboardMarkup(inline_keyboard=[[subscribe_button]])
             await message.answer_photo(photo=poster_url, caption=message_text, parse_mode=ParseMode.HTML, reply_markup=key_sub)
+
 
         # Используем цикл для отправки сообщений на основе данных из description_parser
         for parsed_result in parsed_results[:5]:  # Первые 5 результатов, можно изменить по необходимости

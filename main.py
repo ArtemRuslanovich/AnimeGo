@@ -40,16 +40,16 @@ async def start_bot(bot: Bot):
     dp.message.register(command_back_handler, Command(commands=['back']))
 
 
-    dp.message.register(select_anime, F.text == ('Знаю что посмотреть'))
+    dp.message.register(select_anime, F.text == ('знаю что посмотреть'))
 
     dp.message.register(find_anime, Selector.FIND_ANIME)
 
     dp.callback_query.register(handle_yes_callback, F.data.startswith('Да'))
-    dp.callback_query.register(handle_sub_callback, F.data.startswith('Подписаться'))
+    dp.callback_query.register(handle_sub_callback, F.data.startswith('subscribe'))
 
 
     dp.message.register(command_select_type_handler, F.text == ('Да'))
-    dp.message.register(form.command_select_genre_handler, F.text == ('Не знаю'))
+    dp.message.register(form.command_select_genre_handler, F.text == ('не знаю'))
     dp.message.register(form.command_select_year_handler, StatesForm.GET_GENRE)
     dp.message.register(form.command_show_examples, StatesForm.GET_YEAR)
 

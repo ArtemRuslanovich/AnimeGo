@@ -8,11 +8,3 @@ key_yes = InlineKeyboardMarkup(inline_keyboard=[
         )
     ]
 ])
-key_sub = InlineKeyboardMarkup(inline_keyboard=[
-    [
-        InlineKeyboardButton(
-            text='Подписаться',
-            callback_data='Подписаться'
-        )
-    ]
-])

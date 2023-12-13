@@ -3,13 +3,13 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, KeyboardButtonPol
 type_keyboard = ReplyKeyboardMarkup(keyboard=[
     [
         KeyboardButton(
-            text='Знаю что посмотреть'
+            text='знаю что посмотреть'
         ),
 
     ],
     [
         KeyboardButton(
-            text='Не знаю'
+            text='не знаю'
         )
     ]
 ],
