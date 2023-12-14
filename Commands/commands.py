@@ -6,7 +6,8 @@ async def set_commands(bot: Bot):
     commands = [
         BotCommand(command="/start", description="Начать"),
         BotCommand(command="/help", description="Помощь"),
-        BotCommand(command="/back", description="В начало")
+        BotCommand(command="/back", description="В начало"),
+        BotCommand(command="/fav", description="подписки"),
     ]
     scope_default = BotCommandScopeDefault()
 

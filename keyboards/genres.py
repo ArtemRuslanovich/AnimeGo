@@ -3,35 +3,35 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, KeyboardButtonPol
 genres_keyboard = ReplyKeyboardMarkup(keyboard=[
     [
         KeyboardButton(
-            text='horror🫣'
+            text='horror'
         ),
         KeyboardButton(
-            text='comedy😂'
+            text='comedy'
         ),
         KeyboardButton(
-            text='thriller🤫'
+            text='thriller'
         )
     ],
     [
         KeyboardButton(
-            text='sci-fi🤖'
+            text='sci-fi'
         ),
         KeyboardButton(
             text='historical'
         ),
         KeyboardButton(
-            text='action💥'
+            text='action'
         )
     ],
     [
         KeyboardButton(
-            text='family👨‍👩‍👧‍👦'
+            text='family'
         ),
         KeyboardButton(
-            text='drama😭'
+            text='drama'
         ),
         KeyboardButton(
-            text='parody🤡'
+            text='parody'
         )
     ],
 ],

@@ -7,6 +7,7 @@ from Utils.anime.search_parser import search_parser
 from Utils.form.description_parser import description_parser
 from aiogram.enums import ParseMode
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from Utils.clean_parsed_res import extract_anime_id
 
 
 async def select_anime(message: Message, bot: Bot, state: FSMContext):
@@ -22,13 +23,14 @@ async def find_anime(message: Message, bot: Bot, state: FSMContext):
     
     search_parsed_result = await search_parser(url)
     parsed_result = search_parsed_result[0]
+    clean_parsed_result = await extract_anime_id(parsed_result)
     async def send_description_message(parsed_result):
         poster_url, title, description, rating, anime_id  = await description_parser(parsed_result)
         message_text = f"<b>{title}</b>\n\n" \
                    f"Рейтинг: {rating}\n" \
                    f"{description}\n" \
                    f"{parsed_result}"
-        subscribe_button = InlineKeyboardButton(text="Подписаться", callback_data=f'subscribe_{anime_id}')
+        subscribe_button = InlineKeyboardButton(text="Подписаться", callback_data=f'subscribe_{clean_parsed_result}')
 
     # Создаем клавиатуру и добавляем к ней кнопку
         key_sub = InlineKeyboardMarkup(inline_keyboard=[[subscribe_button]])

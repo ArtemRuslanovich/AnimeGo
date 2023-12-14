@@ -9,6 +9,7 @@ from Utils.form.description_parser import description_parser
 from aiogram.enums import ParseMode
 import datetime
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from Utils.clean_parsed_res import extract_anime_id
 
 
 
@@ -37,7 +38,7 @@ async def command_show_examples(message: Message, bot: Bot, state: FSMContext):
                         f"Рейтинг: {rating}\n" \
                         f"{description}\n" \
                         f"{parsed_result}"
-            subscribe_button = InlineKeyboardButton(text="Подписаться", callback_data=f'subscribe_{anime_id}')
+            subscribe_button = InlineKeyboardButton(text="Подписаться", callback_data=f'subscribe_{clean_parsed_result}')
 
     # Создаем клавиатуру и добавляем к ней кнопку
             key_sub = InlineKeyboardMarkup(inline_keyboard=[[subscribe_button]])
@@ -46,6 +47,7 @@ async def command_show_examples(message: Message, bot: Bot, state: FSMContext):
 
         # Используем цикл для отправки сообщений на основе данных из description_parser
         for parsed_result in parsed_results[:5]:  # Первые 5 результатов, можно изменить по необходимости
+            clean_parsed_result = await extract_anime_id(parsed_result)
             await send_description_message(parsed_result)
     
         await state.clear()

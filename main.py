@@ -3,7 +3,7 @@ import logging
 import sys
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
-from handlers.start import command_start_handler, command_help_handler, command_back_handler
+from handlers.start import command_start_handler, command_help_handler, command_back_handler, command_fav_handler
 from settings import Settings
 from aiogram import F
 from aiogram.filters import Command
@@ -18,7 +18,6 @@ from handlers import form
 from handlers.selecttype import command_select_type_handler
 
 from Utils.statesform import StatesForm, Selector
-#from Utils.isvalidyear import is_valid_year
 
 dp = Dispatcher()
 
@@ -38,6 +37,7 @@ async def start_bot(bot: Bot):
     dp.message.register(command_start_handler, Command(commands=['start']))
     dp.message.register(command_help_handler, Command(commands=['help']))
     dp.message.register(command_back_handler, Command(commands=['back']))
+    dp.message.register(command_fav_handler, Command(commands=['fav']))
 
 
     dp.message.register(select_anime, F.text == ('знаю что посмотреть'))
