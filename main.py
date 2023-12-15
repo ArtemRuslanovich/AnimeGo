@@ -3,6 +3,7 @@ import logging
 import sys
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
+from handlers.notification import notification_handler
 from handlers.start import command_start_handler, command_help_handler, command_back_handler, command_fav_handler
 from settings import Settings
 from aiogram import F
@@ -38,6 +39,8 @@ async def start_bot(bot: Bot):
     dp.message.register(command_help_handler, Command(commands=['help']))
     dp.message.register(command_back_handler, Command(commands=['back']))
     dp.message.register(command_fav_handler, Command(commands=['fav']))
+
+    dp.message.register(notification_handler)
 
 
     dp.message.register(select_anime, F.text == ('знаю что посмотреть'))
