@@ -28,8 +28,6 @@ async def command_show_examples(message: Message, bot: Bot, state: FSMContext):
     genre = data["genre"]
     year = int(data["year"])
     if 1900 <= year <= datetime.datetime.now().year + 1:
-        await message.reply(f'работает жанр {genre}, год {year}')
-
         url = f"https://animego.org/anime/filter/year-from-{year}/genres-is-{genre}/apply"
         parsed_results = await parser(url)
         async def send_description_message(parsed_result):

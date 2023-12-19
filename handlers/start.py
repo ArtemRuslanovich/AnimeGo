@@ -21,7 +21,7 @@ async def command_help_handler(message: Message, bot: Bot) -> None:
     await message.reply(f"Этот бот предназначен для помощи с поиском нужного вам Аниме.")
 
 async def command_back_handler(message: Message, bot: Bot, state: FSMContext) -> None:
-    state.set_state(Selector.FIRST_CH)
+    await state.set_state(Selector.FIRST_CH)
     await message.reply(f"Время сделать выбор 🤔", reply_markup=type_keyboard)
 
 async def command_fav_handler(message: Message, bot: Bot, state: FSMContext) -> None:

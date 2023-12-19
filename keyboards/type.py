@@ -3,7 +3,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, KeyboardButtonPol
 type_keyboard = ReplyKeyboardMarkup(keyboard=[
     [
         KeyboardButton(
-            text='знаю что посмотреть'
+            text='найти'
         ),
 
     ],

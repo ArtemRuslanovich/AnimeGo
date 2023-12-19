@@ -6,7 +6,7 @@ from keyboards.type import type_keyboard
 import asyncpg
 
 async def handle_yes_callback(callback: CallbackQuery,state: FSMContext):
-    state.set_state(Selector.FIRST_CH)
+    await state.set_state(Selector.FIRST_CH)
     await callback.message.answer(f"Время сделать выбор", reply_markup=type_keyboard)
     await callback.answer()
 

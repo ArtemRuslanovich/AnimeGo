@@ -1,9 +1,11 @@
 import asyncio
 import logging
 import sys
+import schedule
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
-from handlers.notification import notification_handler
+from schedule import every
+from Utils.notification import notification_job
 from handlers.start import command_start_handler, command_help_handler, command_back_handler, command_fav_handler
 from settings import Settings
 from aiogram import F
@@ -40,10 +42,10 @@ async def start_bot(bot: Bot):
     dp.message.register(command_back_handler, Command(commands=['back']))
     dp.message.register(command_fav_handler, Command(commands=['fav']))
 
-    dp.message.register(notification_handler)
+    #dp.message.register(notification_handler)
 
 
-    dp.message.register(select_anime, F.text == ('знаю что посмотреть'))
+    dp.message.register(select_anime, F.text == ('найти'))
 
     dp.message.register(find_anime, Selector.FIND_ANIME)
 
@@ -69,6 +71,11 @@ async def main() -> None:
     bot = Bot(Settings.bots.bot_token, parse_mode=ParseMode.HTML)
     # And the run events dispatching
     await dp.start_polling(bot)
+    every().day.at("12:00").do(asyncio.run, notification_job)
+
+    while True:
+        await dp.loop.run_until_complete(schedule.run_pending())
+        await asyncio.sleep(1)
 
 
 if __name__ == "__main__":
