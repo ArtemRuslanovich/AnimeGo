@@ -14,7 +14,8 @@ from Commands.commands import set_commands
 
 from middlewares.dbmiddleware import Dbsession
 import asyncpg
-
+from handlers.manga import select_manga, search_manga
+from handlers.callback_manga import handle_manga_callback
 from handlers.callback import handle_yes_callback, handle_sub_callback
 from handlers.anime import find_anime, select_anime
 from handlers import form
@@ -46,11 +47,14 @@ async def start_bot(bot: Bot):
 
 
     dp.message.register(select_anime, F.text == ('найти'))
+    dp.message.register(select_manga, F.text == ('манга'))
 
     dp.message.register(find_anime, Selector.FIND_ANIME)
+    dp.message.register(search_manga, Selector.FIND_MANGA)
 
     dp.callback_query.register(handle_yes_callback, F.data.startswith('Да'))
     dp.callback_query.register(handle_sub_callback, F.data.startswith('subscribe'))
+    dp.callback_query.register(handle_manga_callback, F.data.startswith('add'))
 
 
     dp.message.register(command_select_type_handler, F.text == ('Да'))

@@ -7,5 +7,5 @@ class StatesForm(StatesGroup):
 class Selector(StatesGroup):
     FIRST_CH = State()
     FIND_ANIME = State()
-
+    FIND_MANGA = State()
 
