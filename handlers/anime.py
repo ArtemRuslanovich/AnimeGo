@@ -2,6 +2,7 @@ from aiogram import Bot
 from aiogram.types import Message
 from urllib.parse import quote
 from aiogram.fsm.context import FSMContext
+from Utils.manga.manga_img import improve_image_quality_with_api
 from Utils.statesform import Selector
 from Utils.anime.search_parser import search_parser
 from Utils.form.description_parser import description_parser
@@ -32,6 +33,7 @@ async def find_anime(message: Message, bot: Bot, state: FSMContext):
                            f"{description}\n" \
                            f"{parsed_result}"
             subscribe_button = InlineKeyboardButton(text="Подписаться", callback_data=f'subscribe_{clean_parsed_result}')
+            #good_image = improve_image_quality_with_api(poster_url)
 
             # Создаем клавиатуру и добавляем к ней кнопку
             key_sub = InlineKeyboardMarkup(inline_keyboard=[[subscribe_button]])

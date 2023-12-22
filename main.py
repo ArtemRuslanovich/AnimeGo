@@ -75,7 +75,7 @@ async def main() -> None:
     bot = Bot(Settings.bots.bot_token, parse_mode=ParseMode.HTML)
     # And the run events dispatching
     await dp.start_polling(bot)
-    every().day.at("12:00").do(asyncio.run, notification_job)
+    every().hour.do(asyncio.run, notification_job)
 
     while True:
         await dp.loop.run_until_complete(schedule.run_pending())

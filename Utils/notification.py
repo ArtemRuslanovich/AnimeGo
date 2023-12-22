@@ -7,6 +7,10 @@ from schedule import every
 from datetime import datetime
 from bs4 import BeautifulSoup
 import aiohttp
+from aiogram.enums import ParseMode
+from Utils.form.description_parser import description_parser
+from settings import Settings
+
 
 DATABASE_URL = "postgresql://postgres:80156120189fap@localhost/Users"
 
@@ -15,19 +19,15 @@ async def connect_to_db():
 
 async def close_db_connection(connection):
     await connection.close()
-
-async def send_description_message(bot, user_id, anime_url, date):
-    # Реализуйте логику отправки сообщения пользователю
-    pass
-
+    
 async def process_anime_list_entry(bot, anime_list_entry):
     try:
         anime_list = anime_list_entry['anime_list']
 
         if anime_list and isinstance(anime_list, list):
-            for anime_url in anime_list:
-                anime_url = anime_url.replace('_', '-') if anime_url else None
-                async with aiohttp.ClientSession() as session:
+            async with aiohttp.ClientSession() as session:
+                for anime_url in anime_list:
+                    anime_url = anime_url.replace('_', '-') if anime_url else None
                     async with session.get(f"https://animego.org/anime/{anime_url}") as response:
                         html = await response.text()
                         soup = BeautifulSoup(html, 'html.parser')
@@ -65,9 +65,20 @@ async def process_anime_list_entry(bot, anime_list_entry):
                                     user_id, user_anime_list = record['user_id'], record['anime_list']
 
                                     if anime_url in user_anime_list:
-                                        await send_description_message(bot, user_id, anime_url, date)
+                                        await send_description_message(bot, anime_url)
     except Exception as e:
         logging.exception(f"An error occurred during processing anime list entry: {e}")
+
+async def send_description_message(bot, anime_url):
+    try:
+        poster_url, title, description, rating, anime_id = await description_parser(anime_url)
+        message_text = f"<b>{title}</b>\n\n" \
+                    f"Рейтинг: {rating}\n" \
+                    f"{description}\n" \
+                    f"{anime_url}"
+        await bot.send_photo(photo=poster_url, caption=message_text, parse_mode=ParseMode.HTML)
+    except Exception as e:
+        logging.exception(f"An error occurred during sending description message: {e}")
 
 async def notification_job():
     try:
@@ -75,7 +86,7 @@ async def notification_job():
         query = "SELECT anime_list FROM usersdata;"
         result = await connection.fetch(query)
 
-        bot = Bot(token="YOUR_BOT_TOKEN")  # Замените "YOUR_BOT_TOKEN" на реальный токен вашего бота
+        bot = Bot(token=Settings.bots.bot_token)
         tasks = [process_anime_list_entry(bot, anime_list_entry) for anime_list_entry in result]
         await asyncio.gather(*tasks)
     except Exception as e:

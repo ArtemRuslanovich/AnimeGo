@@ -4,6 +4,7 @@ import pandas as pd
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputFile
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
+from Utils.manga.manga_img import improve_image_quality_with_api
 from Utils.statesform import Selector
 
 
@@ -32,6 +33,7 @@ async def search_manga(message: types.Message, state: FSMContext):
                          f"Оценка: {score}\n"
             
             add_button = InlineKeyboardButton(text="Добавить в избранное", callback_data=f'add_{title}')
+            #good_image = improve_image_quality_with_api(url_image)
 
             # Создаем клавиатуру и добавляем к ней кнопку
             key_add = InlineKeyboardMarkup(inline_keyboard=[[add_button]])

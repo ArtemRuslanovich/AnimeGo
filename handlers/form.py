@@ -1,5 +1,6 @@
 from aiogram import Bot
 from aiogram.types import Message
+from Utils.manga.manga_img import improve_image_quality_with_api
 from keyboards.genres import genres_keyboard
 from aiogram.fsm.context import FSMContext
 from Utils.statesform import StatesForm
@@ -36,6 +37,7 @@ async def command_show_examples(message: Message, bot: Bot, state: FSMContext):
                         f"{description}\n" \
                         f"{parsed_result}"
             subscribe_button = InlineKeyboardButton(text="Подписаться", callback_data=f'subscribe_{clean_parsed_result}')
+            #good_image = improve_image_quality_with_api(poster_url)
 
     # Создаем клавиатуру и добавляем к ней кнопку
             key_sub = InlineKeyboardMarkup(inline_keyboard=[[subscribe_button]])
