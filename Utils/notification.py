@@ -8,8 +8,8 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 import aiohttp
 from aiogram.enums import ParseMode
-from Utils.form.description_parser import description_parser
-from settings import Settings
+from utils.form.description_parser import description_parser
+from utils.settings import Settings
 
 
 DATABASE_URL = "postgresql://postgres:80156120189fap@localhost/Users"

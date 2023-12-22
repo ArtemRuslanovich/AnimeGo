@@ -2,13 +2,13 @@ from aiogram import Bot
 from aiogram.types import Message
 from urllib.parse import quote
 from aiogram.fsm.context import FSMContext
-from Utils.manga.manga_img import improve_image_quality_with_api
-from Utils.statesform import Selector
-from Utils.anime.search_parser import search_parser
-from Utils.form.description_parser import description_parser
+from utils.manga.manga_img import improve_image_quality_with_api
+from utils.statesform import Selector
+from utils.anime.search_parser import search_parser
+from utils.form.description_parser import description_parser
 from aiogram.enums import ParseMode
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from Utils.clean_parsed_res import extract_anime_id
+from utils.clean_parsed_res import extract_anime_id
 
 
 async def select_anime(message: Message, bot: Bot, state: FSMContext):

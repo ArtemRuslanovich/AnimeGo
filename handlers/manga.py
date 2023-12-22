@@ -4,8 +4,8 @@ import pandas as pd
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputFile
 from aiogram.types import Message
 from aiogram.fsm.context import FSMContext
-from Utils.manga.manga_img import improve_image_quality_with_api
-from Utils.statesform import Selector
+from utils.manga.manga_img import improve_image_quality_with_api
+from utils.statesform import Selector
 
 
 async def select_manga(message: Message, bot: Bot, state: FSMContext):

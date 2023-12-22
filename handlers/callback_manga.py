@@ -1,7 +1,7 @@
 from aiogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram import Bot
 from aiogram.fsm.context import FSMContext
-from Utils.statesform import Selector
+from utils.statesform import Selector
 from keyboards.type import type_keyboard
 import asyncpg
 

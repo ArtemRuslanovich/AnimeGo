@@ -3,7 +3,7 @@ from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 from keyboards.type import type_keyboard
 from aiogram.fsm.context import FSMContext
-from Utils.statesform import Selector
+from utils.statesform import Selector
 
 async def command_select_type_handler(message: Message, bot: Bot, state: FSMContext):
     await state.set_state(Selector.FIRST_CH)

@@ -1,15 +1,15 @@
 from aiogram import Bot
 from aiogram.types import Message
-from Utils.manga.manga_img import improve_image_quality_with_api
+from utils.manga.manga_img import improve_image_quality_with_api
 from keyboards.genres import genres_keyboard
 from aiogram.fsm.context import FSMContext
-from Utils.statesform import StatesForm
-from Utils.form.parser import parser
-from Utils.form.description_parser import description_parser
+from utils.statesform import StatesForm
+from utils.form.parser import parser
+from utils.form.description_parser import description_parser
 from aiogram.enums import ParseMode
 import datetime
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from Utils.clean_parsed_res import extract_anime_id
+from utils.clean_parsed_res import extract_anime_id
 
 
 

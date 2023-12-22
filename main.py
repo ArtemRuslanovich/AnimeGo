@@ -5,9 +5,9 @@ import schedule
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from schedule import every
-from Utils.notification import notification_job
+from utils.notification import notification_job
 from handlers.start import command_start_handler, command_help_handler, command_back_handler, command_fav_handler
-from settings import Settings
+from utils.settings import Settings
 from aiogram import F
 from aiogram.filters import Command
 from Commands.commands import set_commands
@@ -21,7 +21,7 @@ from handlers.anime import find_anime, select_anime
 from handlers import form
 from handlers.selecttype import command_select_type_handler
 
-from Utils.statesform import StatesForm, Selector
+from utils.statesform import StatesForm, Selector
 
 dp = Dispatcher()
 
