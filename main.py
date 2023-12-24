@@ -11,12 +11,10 @@ from utils.settings import Settings
 from aiogram import F
 from aiogram.filters import Command
 from Commands.commands import set_commands
-
 from middlewares.dbmiddleware import Dbsession
-import asyncpg
 from handlers.manga import select_manga, search_manga
-from handlers.callback_manga import handle_manga_callback
-from handlers.callback import handle_yes_callback, handle_sub_callback
+from callbacks.callback_manga import handle_manga_callback
+from callbacks.callback import handle_yes_callback, handle_sub_callback
 from handlers.anime import find_anime, select_anime
 from handlers import form
 from handlers.selecttype import command_select_type_handler
