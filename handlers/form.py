@@ -1,6 +1,5 @@
 from aiogram import Bot
 from aiogram.types import Message
-from utils.manga.manga_img import improve_image_quality_with_api
 from keyboards.genres import genres_keyboard
 from aiogram.fsm.context import FSMContext
 from utils.statesform import StatesForm
@@ -10,7 +9,6 @@ from aiogram.enums import ParseMode
 import datetime
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from utils.clean_parsed_res import extract_anime_id
-
 
 
 async def command_select_genre_handler(message: Message, state: FSMContext):

@@ -13,18 +13,18 @@ from aiogram.enums import ParseMode
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-async def command_start_handler(message: Message, bot: Bot, request: Request):
+async def command_start_handler(message: Message, request: Request):
     await request.add_data(message.from_user.id, message.from_user.first_name)
     await message.reply(f"Привет, {hbold(message.from_user.full_name)}! Начнем? 🙃", reply_markup=key_yes)
 
-async def command_help_handler(message: Message, bot: Bot) -> None:
+async def command_help_handler(message: Message) -> None:
     await message.reply(f"Этот бот предназначен для помощи с поиском нужного вам Аниме.")
 
-async def command_back_handler(message: Message, bot: Bot, state: FSMContext) -> None:
+async def command_back_handler(message: Message, state: FSMContext) -> None:
     await state.set_state(Selector.FIRST_CH)
     await message.reply(f"Время сделать выбор 🤔", reply_markup=type_keyboard)
 
-async def command_fav_handler(message: Message, bot: Bot, state: FSMContext) -> None:
+async def command_fav_handler(message: Message) -> None:
     user_id = message.from_user.id
     anime_urls = await show_fav_list(user_id)
     async def send_description_message(parsed_result):

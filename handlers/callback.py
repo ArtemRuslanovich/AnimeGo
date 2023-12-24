@@ -1,22 +1,14 @@
-from aiogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import CallbackQuery
 from aiogram import Bot
 from aiogram.fsm.context import FSMContext
 from utils.statesform import Selector
 from keyboards.type import type_keyboard
-import asyncpg
+from utils.postgresdata import connect_to_db, close_db_connection
 
 async def handle_yes_callback(callback: CallbackQuery,state: FSMContext):
     await state.set_state(Selector.FIRST_CH)
     await callback.message.answer(f"Время сделать выбор", reply_markup=type_keyboard)
     await callback.answer()
-
-DATABASE_URL = "postgresql://postgres:80156120189fap@localhost/Users"
-
-async def connect_to_db():
-    return await asyncpg.connect(DATABASE_URL)
-
-async def close_db_connection(connection):
-    await connection.close()
 
 async def handle_sub_callback(callback: CallbackQuery, state: FSMContext, bot: Bot):
     anime_id = callback.data.removeprefix('subscribe_')

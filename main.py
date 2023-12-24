@@ -20,18 +20,10 @@ from handlers.callback import handle_yes_callback, handle_sub_callback
 from handlers.anime import find_anime, select_anime
 from handlers import form
 from handlers.selecttype import command_select_type_handler
-
+from utils.postgresdata import create_pool
 from utils.statesform import StatesForm, Selector
 
 dp = Dispatcher()
-
-
-async def create_pool():
-    return await asyncpg.create_pool(user='postgres',
-                                    password='80156120189fap',
-                                    database='Users', host='localhost',
-                                    port='5432',
-                                    command_timeout=60)
 
 
 

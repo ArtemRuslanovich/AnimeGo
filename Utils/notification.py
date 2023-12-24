@@ -1,9 +1,7 @@
 import asyncio
 import logging
-from aiogram import Bot, Dispatcher
-from aiogram.types import Message
-import asyncpg
-from schedule import every
+from aiogram import Bot
+from utils.postgresdata import connect_to_db, close_db_connection
 from datetime import datetime
 from bs4 import BeautifulSoup
 import aiohttp
@@ -11,14 +9,6 @@ from aiogram.enums import ParseMode
 from utils.form.description_parser import description_parser
 from utils.settings import Settings
 
-
-DATABASE_URL = "postgresql://postgres:80156120189fap@localhost/Users"
-
-async def connect_to_db():
-    return await asyncpg.connect(DATABASE_URL)
-
-async def close_db_connection(connection):
-    await connection.close()
     
 async def process_anime_list_entry(bot, anime_list_entry):
     try:

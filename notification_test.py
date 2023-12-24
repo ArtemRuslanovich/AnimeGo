@@ -1,11 +1,8 @@
 import pytest
-from aioresponses import aioresponses
 from aiogram import Bot
 from utils.settings import Settings
-from utils.form.description_parser import description_parser
-from utils.notification import connect_to_db, close_db_connection, process_anime_list_entry, send_description_message, notification_job
+from utils.notification import process_anime_list_entry
 
-DATABASE_URL = "postgresql://postgres:80156120189fap@localhost/Users"
 
 @pytest.mark.asyncio
 async def test_process_anime_list_entry():

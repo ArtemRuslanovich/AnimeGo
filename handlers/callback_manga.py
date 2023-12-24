@@ -1,19 +1,9 @@
-from aiogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import CallbackQuery
 from aiogram import Bot
 from aiogram.fsm.context import FSMContext
-from utils.statesform import Selector
-from keyboards.type import type_keyboard
-import asyncpg
+from utils.postgresdata import connect_to_db, close_db_connection
 
-DATABASE_URL = "postgresql://postgres:80156120189fap@localhost/Users"
-
-async def connect_to_db():
-    return await asyncpg.connect(DATABASE_URL)
-
-async def close_db_connection(connection):
-    await connection.close()
-
-async def handle_manga_callback(callback: CallbackQuery, state: FSMContext, bot: Bot):
+async def handle_manga_callback(callback: CallbackQuery):
     manga_id = callback.data.removeprefix('add_')
 
     # Получаем ID пользователя

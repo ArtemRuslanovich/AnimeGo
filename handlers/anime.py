@@ -2,7 +2,6 @@ from aiogram import Bot
 from aiogram.types import Message
 from urllib.parse import quote
 from aiogram.fsm.context import FSMContext
-from utils.manga.manga_img import improve_image_quality_with_api
 from utils.statesform import Selector
 from utils.anime.search_parser import search_parser
 from utils.form.description_parser import description_parser
