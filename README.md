@@ -1,3 +1,6 @@
+https://img.shields.io/badge/%20Python%20-grey?style=for-the-badge&logo=python
+
+
 # Telegram Anime Recommendation Bot
 
 **Telegram bot** that provides anime and manga recommendations, allows users to search by title, and manage a favorites list. The bot is built using **aiogram**, utilizes web scraping with **Beautiful Soup (BS4)** and **Selenium**, and stores data in a **PostgreSQL** database.
