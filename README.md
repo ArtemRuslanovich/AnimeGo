@@ -1,4 +1,4 @@
-https://img.shields.io/badge/%20Python%20-grey?style=for-the-badge&logo=python
+
 
 
 # Telegram Anime Recommendation Bot
