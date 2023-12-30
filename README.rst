@@ -1,8 +1,3 @@
-
-
-
-# Telegram Anime Recommendation Bot
-
 .. image:: https://img.shields.io/pypi/pyversions/aiogram.svg?style=flat-square
     :target: https://pypi.python.org/pypi/aiogram
     :alt: Supported python versions
@@ -11,44 +6,37 @@
     :target: https://core.telegram.org/bots/api
     :alt: Telegram Bot API
 
-**Telegram bot** that provides anime and manga recommendations, allows users to search by title, and manage a favorites list. The bot is built using **aiogram**, utilizes web scraping with **Beautiful Soup (BS4)** and **Selenium**, and stores data in a **PostgreSQL** database.
+Telegram Anime Recommendation Bot
+=================================
 
-## Features
+Overview
+--------
 
-1. **Anime Search by Title:** Users can search for anime or manga by title to get detailed information.
+This Telegram bot is designed to assist users in discovering and managing their favorite anime and manga titles. It utilizes web scraping techniques with BeautifulSoup (BS4) and Selenium for data extraction, while storing information in a PostgreSQL database. The bot is built using the `aiogram <https://docs.aiogram.dev/>`_ framework, allowing for asynchronous interactions with Telegram's API. Additionally, `aiohttp`_ is employed to ensure smooth and efficient asynchronous communication.
 
-2. **Anime Recommendations:** The bot helps users choose anime or manga to watch based on preferences.
+Features
+--------
 
-3. **Favorites List:** Users can add anime or manga to their favorites list for future reference.
+1. **Anime and Manga Search:** Users can search for anime or manga titles based on their titles.
 
-## Technologies Used
+2. **Anime Recommendations:** The bot provides recommendations to help users choose which anime to watch.
 
-- **aiogram:** The bot framework used for interaction with the Telegram API.
-- **aiohttp:** Enables asynchronous HTTP requests for better performance.
-- **Beautiful Soup (BS4):** For web scraping anime/manga details.
-- **Selenium:** Used in conjunction with BS4 for scenarios where dynamic content requires JavaScript rendering.
-- **PostgreSQL:** The chosen database for storing user data and favorites.
+3. **Favorite List:** Users can add anime or manga titles to their favorite list for easy access.
 
-## Getting Started
+Installation
+------------
 
-### Prerequisites
-
-1. Python 3.7 or higher
-2. PostgreSQL installed and configured
-
-### Installation
-
-1. **Clone the repository:**
+1. Clone the repository::
 
    ```bash
-   git clone hhttps://github.com/ArtemRuslanovich/AnimeGo
+   git clone https://github.com/your-username/telegram-anime-bot.git
 
-2. **INSTALL REQUIREMENTS:**
+2. Install requirements::
 
    ```bash
-   pip install -r requirements.txt
+   pip install requirements.txt
 
-3. **RUN APPLICATION:**
+3. Run app::
 
    ```bash
    python main.py
