@@ -28,15 +28,12 @@ Installation
 
 1. Clone the repository::
 
-   ```bash
    git clone https://github.com/your-username/telegram-anime-bot.git
 
 2. Install requirements::
 
-   ```bash
    pip install requirements.txt
 
 3. Run app::
 
-   ```bash
    python main.py
