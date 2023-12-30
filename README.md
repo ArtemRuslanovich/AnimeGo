@@ -3,6 +3,14 @@
 
 # Telegram Anime Recommendation Bot
 
+.. image:: https://img.shields.io/pypi/pyversions/aiogram.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/aiogram
+    :alt: Supported python versions
+
+.. image:: https://img.shields.io/badge/dynamic/json?color=blue&logo=telegram&label=Telegram%20Bot%20API&query=%24.api.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Faiogram%2Faiogram%2Fdev-3.x%2F.butcher%2Fschema%2Fschema.json&style=flat-square
+    :target: https://core.telegram.org/bots/api
+    :alt: Telegram Bot API
+
 **Telegram bot** that provides anime and manga recommendations, allows users to search by title, and manage a favorites list. The bot is built using **aiogram**, utilizes web scraping with **Beautiful Soup (BS4)** and **Selenium**, and stores data in a **PostgreSQL** database.
 
 ## Features
