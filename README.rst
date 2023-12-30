@@ -27,14 +27,8 @@ Installation
 ------------
 
 1. Clone the repository::
-<<<<<<< HEAD
-
-   git clone https://github.com/ArtemRuslanovich/AnimeGo
-
-=======
    
    ```git clone https://github.com/ArtemRuslanovich/AnimeGo.git
->>>>>>> f8859685f916793eb8bfac274361797022d4f82b
 
 2. Install requirements::
    
