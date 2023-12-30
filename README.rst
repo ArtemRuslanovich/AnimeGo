@@ -28,7 +28,7 @@ Installation
 
 1. Clone the repository::
    
-   ```git clone https://github.com/your-username/telegram-anime-bot.git
+   ```git clone https://github.com/ArtemRuslanovich/AnimeGo.git
 
 2. Install requirements::
    
