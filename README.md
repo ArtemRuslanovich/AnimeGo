@@ -31,3 +31,13 @@
 
    ```bash
    git clone hhttps://github.com/ArtemRuslanovich/AnimeGo
+
+2. **INSTALL REQUIREMENTS:**
+
+   ```bash
+   pip install -r requirements.txt
+
+3. **RUN APPLICATION:**
+
+   ```bash
+   python main.py
