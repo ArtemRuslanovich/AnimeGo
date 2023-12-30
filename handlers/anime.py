@@ -32,9 +32,7 @@ async def find_anime(message: Message, bot: Bot, state: FSMContext):
                            f"{description}\n" \
                            f"{parsed_result}"
             subscribe_button = InlineKeyboardButton(text="Подписаться", callback_data=f'subscribe_{clean_parsed_result}')
-            #good_image = improve_image_quality_with_api(poster_url)
 
-            # Создаем клавиатуру и добавляем к ней кнопку
             key_sub = InlineKeyboardMarkup(inline_keyboard=[[subscribe_button]])
             await message.answer_photo(photo=poster_url, caption=message_text, parse_mode=ParseMode.HTML, reply_markup=key_sub)
 
