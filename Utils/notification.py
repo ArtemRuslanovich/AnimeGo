@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import aiohttp
 from aiogram.enums import ParseMode
 from utils.form.description_parser import description_parser
-from utils.settings import Settings
+from settings import Settings
 
     
 async def process_anime_list_entry(bot, anime_list_entry):
